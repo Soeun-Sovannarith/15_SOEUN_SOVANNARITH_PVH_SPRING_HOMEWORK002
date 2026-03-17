@@ -2,15 +2,10 @@ package com.rith._15_soeun_sovannarith_pvh_spring_homework02.controllers;
 
 
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiResponse.Response;
-import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Courses;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Instructor;
-import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.CourseService;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.InstructorService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,8 +26,8 @@ public class InstructorController {
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Instructor fetched successfully"));
     }
 
-    @GetMapping("{instructor-id}")
-    public ResponseEntity<?> getInstructorById(@RequestParam Integer instructorId) {
+    @GetMapping("/{instructorId}")
+    public ResponseEntity<?> getInstructorById(@PathVariable Integer instructorId) {
         Instructor result = instructorService.getInstructorById(instructorId);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Instructor retrieved successfully"));
     }

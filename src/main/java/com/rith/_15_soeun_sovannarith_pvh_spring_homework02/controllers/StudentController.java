@@ -28,15 +28,27 @@ public class StudentController {
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Students retrieved successfully" ));
     }
 
-    @GetMapping("{student-id}")
-    public ResponseEntity<?> getStudentById(@RequestParam Integer studentId){
+    @GetMapping("/{studentId}")
+    public ResponseEntity<?> getStudentById(@PathVariable Integer studentId){
         Students result = studentService.getStudentById(studentId);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Student retrieved successfully" ));
     }
 
     @PostMapping()
     public ResponseEntity<?> createStudent(@RequestBody StudentRequest newStudent){
-        StudentRequest result = studentService.createStudent(newStudent);
+        Students result = studentService.createStudent(newStudent);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Student created successfully" ));
+    }
+
+    @PutMapping("/{studentId}")
+    public ResponseEntity<?> updateStudent(@PathVariable Integer studentId, @RequestBody StudentRequest student) {
+        Students result = studentService.updateStudent(studentId, student);
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Student updated successfully"));
+    }
+
+    @DeleteMapping("/{studentId}")
+    public ResponseEntity<?> deleteStudent(@PathVariable Integer studentId) {
+        studentService.deleteStudent(studentId);
+        return ResponseEntity.ok().body(Response.ResponseSuccess(null, "Student deleted successfully"));
     }
 }

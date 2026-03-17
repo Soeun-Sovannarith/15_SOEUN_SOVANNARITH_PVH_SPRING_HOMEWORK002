@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Courses {
-    private Long courseId;
+    private Integer courseId;
     private String courseName;
     private String description;
     private List<Instructor> instructor;

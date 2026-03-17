@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Instructor {
 
-    private Long instructorId;
+    private Integer instructorId;
     private String instructorName;
     private String email;
 }

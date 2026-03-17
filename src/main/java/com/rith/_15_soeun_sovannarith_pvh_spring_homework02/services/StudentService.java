@@ -13,5 +13,9 @@ public interface StudentService {
 
     Students getStudentById(Integer studentId);
 
-    StudentRequest createStudent(StudentRequest student);
+    Students createStudent(StudentRequest student);
+
+    Students updateStudent(Integer studentId, StudentRequest student);
+
+    void deleteStudent(Integer studentId);
 }

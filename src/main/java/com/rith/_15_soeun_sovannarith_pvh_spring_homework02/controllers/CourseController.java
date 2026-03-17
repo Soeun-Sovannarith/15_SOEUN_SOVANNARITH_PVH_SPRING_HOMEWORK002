@@ -5,10 +5,7 @@ import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiResponse.R
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Courses;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.CourseService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,8 +25,8 @@ public class CourseController {
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Courses fetched successfully"));
     }
 
-    @GetMapping("{course-id}")
-    public ResponseEntity<?> getCourseById(@RequestParam Integer courseId) {
+    @GetMapping("/{courseId}")
+    public ResponseEntity<?> getCourseById(@PathVariable Integer courseId) {
         Courses result = courseService.getCourseById(courseId);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Course retrieved successfully"));
     }

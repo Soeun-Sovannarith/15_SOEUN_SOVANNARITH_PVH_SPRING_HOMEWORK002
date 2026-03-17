@@ -22,4 +22,8 @@ public interface CourseRepository {
     @ResultMap("courseMapper")
     @Select("Select * from courses where course_id = #{courseId}")
     Courses getCourseById(Integer courseId);
+
+    @ResultMap("courseMapper")
+    @Select("SELECT c.* FROM courses c JOIN student_course sc ON c.course_id = sc.course_id WHERE sc.student_id = #{studentId}")
+    List<Courses> getCoursesByStudentId(Integer studentId);
 }

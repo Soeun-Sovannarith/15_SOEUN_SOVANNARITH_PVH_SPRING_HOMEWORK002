@@ -23,13 +23,11 @@ VALUES
     ('Operating Systems', 'Processes, memory, scheduling', 1);
 
 
-UPDATE students
-SET student_name = CASE student_id
-                       WHEN 1 THEN 'Sok Dara'
-                       WHEN 2 THEN 'Chantha Srey'
-                       WHEN 3 THEN 'Vanna Sok'
-                       WHEN 4 THEN 'Davy Sopheak'
-                       WHEN 5 THEN 'Srey Pov'
-                       WHEN 6 THEN 'Kakina'
-    END
-WHERE student_id IN (1,2,3,4,5,6);
+INSERT INTO students (student_name, email, phone_number)
+VALUES
+    ('Sok Dara', 'sokdara@gmail.com', '012345678'),
+    ('Chantha Srey', 'chantha@gmail.com', '098765432'),
+    ('Vanna Sok', 'vanna@gmail.com', '011223344'),
+    ('Davy Sopheak', 'davy@gmail.com', '099887766'),
+    ('Srey Pov', 'sreypov@gmail.com', '077665544'),
+    ('Kanitha', 'Kanitha@gmail.com', '066554433');
