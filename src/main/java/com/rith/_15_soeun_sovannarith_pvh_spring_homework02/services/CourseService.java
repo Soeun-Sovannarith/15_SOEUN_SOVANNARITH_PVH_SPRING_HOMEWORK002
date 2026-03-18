@@ -13,7 +13,9 @@ public interface CourseService {
 
     Courses getCourseById(Integer courseId);
 
-    Courses addCourse(Integer instructorId ,CourseRequest newCourse);
+    Courses addCourse(CourseRequest newCourse,Integer instructorId);
 
-    Courses addCourse(Integer instructorId, CourseRequest newCourse);
+    Courses updateCourse(Integer courseId, CourseRequest updatedCourse);
+
+    void deleteCourse(Integer courseId);
 }

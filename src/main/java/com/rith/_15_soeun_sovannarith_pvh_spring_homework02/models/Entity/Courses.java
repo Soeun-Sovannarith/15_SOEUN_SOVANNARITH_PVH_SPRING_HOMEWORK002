@@ -13,5 +13,5 @@ public class Courses {
     private Integer courseId;
     private String courseName;
     private String description;
-    private List<Instructor> instructor;
+    private Instructor instructor;
 }

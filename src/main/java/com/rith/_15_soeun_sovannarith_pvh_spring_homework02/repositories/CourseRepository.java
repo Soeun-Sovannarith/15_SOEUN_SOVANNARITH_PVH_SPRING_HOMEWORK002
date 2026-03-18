@@ -30,5 +30,13 @@ public interface CourseRepository {
 
     @ResultMap("courseMapper")
     @Select("INSERT INTO courses (course_name, description,instructor_id) VALUES (#{req.courseName}, #{req.description}, #{instructorId})")
-    Courses addCourse(@Param("instructorId")Integer instructorId, @Param("req") CourseRequest newCourse);
+    Courses addCourse( @Param("req") CourseRequest newCourse, @Param("instructorId")Integer instructorId);
+
+    @ResultMap("courseMapper")
+    @Select("UPDATE courses SET course_name = #{req.courseName}, description = #{req.description}, instructor_id = #{req.instructorId} WHERE course_id = #{courseId} ")
+    Courses updateCourse(@Param("courseId")Integer courseId, @Param("req")CourseRequest updatedCourse);
+
+    @ResultMap("courseMapper")
+    @Select("DELETE FROM courses WHERE course_id = #{courseId}")
+    void deleteCourse(@Param("courseId")Integer courseId);
 }
