@@ -1,5 +1,6 @@
 package com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.Impl;
 
+import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiRequest.InstructorRequest;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Instructor;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.repositories.InstructorRepository;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.InstructorService;
@@ -27,5 +28,20 @@ public class InstructorServiceImpl implements InstructorService {
     @Override
     public Instructor getInstructorById(Integer instructorId) {
         return instructorRepository.getInstructorById(instructorId);
+    }
+
+    @Override
+    public Instructor createInstructor(InstructorRequest newInstructor) {
+        return instructorRepository.createInstructor(newInstructor);
+    }
+
+    @Override
+    public Instructor updateInstructor(Integer instructorId, InstructorRequest updatedInstructor) {
+        return instructorRepository.updateInstructor(instructorId, updatedInstructor);
+    }
+
+    @Override
+    public Instructor deleteInstructor(Integer instructorId) {
+        return instructorRepository.deleteInstructor(instructorId);
     }
 }

@@ -1,6 +1,7 @@
 package com.rith._15_soeun_sovannarith_pvh_spring_homework02.repositories;
 
 
+import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiRequest.CourseRequest;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Courses;
 import org.apache.ibatis.annotations.*;
 
@@ -26,4 +27,8 @@ public interface CourseRepository {
     @ResultMap("courseMapper")
     @Select("SELECT c.* FROM courses c JOIN student_course sc ON c.course_id = sc.course_id WHERE sc.student_id = #{studentId}")
     List<Courses> getCoursesByStudentId(Integer studentId);
+
+    @ResultMap("courseMapper")
+    @Select("INSERT INTO courses (course_name, description,instructor_id) VALUES (#{req.courseName}, #{req.description}, #{instructorId})")
+    Courses addCourse(@Param("instructorId")Integer instructorId, @Param("req") CourseRequest newCourse);
 }

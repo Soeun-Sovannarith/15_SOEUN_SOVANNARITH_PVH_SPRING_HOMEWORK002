@@ -1,6 +1,7 @@
 package com.rith._15_soeun_sovannarith_pvh_spring_homework02.services;
 
 
+import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiRequest.CourseRequest;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Courses;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,8 @@ public interface CourseService {
     List<Courses> getAllCourse(Integer page, Integer size);
 
     Courses getCourseById(Integer courseId);
+
+    Courses addCourse(Integer instructorId ,CourseRequest newCourse);
+
+    Courses addCourse(Integer instructorId, CourseRequest newCourse);
 }

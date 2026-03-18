@@ -1,5 +1,6 @@
 package com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.Impl;
 
+import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiRequest.CourseRequest;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Courses;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.repositories.CourseRepository;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.CourseService;
@@ -27,5 +28,10 @@ public class CourseServiceImpl implements CourseService {
     public Courses getCourseById(Integer courseId) {
 
         return courseRepository.getCourseById(courseId);
+    }
+
+    @Override
+    public Courses addCourse(Integer instructorId, CourseRequest newCourse) {
+        return courseRepository.addCourse(instructorId, newCourse);
     }
 }

@@ -1,6 +1,7 @@
 package com.rith._15_soeun_sovannarith_pvh_spring_homework02.controllers;
 
 
+import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiRequest.InstructorRequest;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.ApiResponse.Response;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.models.Entity.Instructor;
 import com.rith._15_soeun_sovannarith_pvh_spring_homework02.services.InstructorService;
@@ -31,4 +32,28 @@ public class InstructorController {
         Instructor result = instructorService.getInstructorById(instructorId);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Instructor retrieved successfully"));
     }
+
+    @PostMapping()
+    public ResponseEntity<?> createInstructor(@RequestBody InstructorRequest newInstructor){
+        Instructor result = instructorService.createInstructor(newInstructor);
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Instructor created successfully" ));
+    }
+
+    @PutMapping("{instructor-id}")
+    public ResponseEntity<?> updateInstructor(@PathVariable("instructor-id") Integer instructorId, InstructorRequest updatedInstructor) {
+        Instructor result = instructorService.updateInstructor(instructorId,updatedInstructor);
+        return ResponseEntity.ok(Response.ResponseSuccess(result,"Instructor updated successfully"));
+
+    }
+
+    @DeleteMapping("{instructor-id}")
+    public ResponseEntity<?> deleteInstructor(@PathVariable("instructor-id") Integer instructorId){
+
+
+        Instructor result = instructorService.deleteInstructor(instructorId);
+
+        return ResponseEntity.ok(Response.ResponseSuccess(result,"Instructor deleted successfully"));
+    }
+
+
 }

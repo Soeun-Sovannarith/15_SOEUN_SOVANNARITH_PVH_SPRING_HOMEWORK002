@@ -31,6 +31,13 @@ public class CourseController {
         return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Course retrieved successfully"));
     }
 
+    @PostMapping()
+    public ResponseEntity<?>addCourse(@PathVariable Integer instructorId,@RequestBody CourseRequest newCourse){
+        Courses result = courseService.addCourse(instructorId,newCourse);
+        return ResponseEntity.ok(Response.ResponseSuccess(result,"Course added successfully"));
+
+    }
+
 }
 
 
