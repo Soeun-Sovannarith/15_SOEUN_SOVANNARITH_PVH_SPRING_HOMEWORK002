@@ -25,8 +25,8 @@ public class Response <T> {
     public static <T> Response<T> ResponseSuccess(T payload, String msg) {
         return new Response<>(true, 200, msg, payload,Instant.now());
     }
-    public static <T> Response<T> ResponseFail(){
-        return new Response<>(false,404,"The Data might not exist",null,Instant.now());
+    public static <T> Response<T> ResponseFail(String msg){
+        return new Response<>(false,404,msg,null,Instant.now());
     }
 
 
