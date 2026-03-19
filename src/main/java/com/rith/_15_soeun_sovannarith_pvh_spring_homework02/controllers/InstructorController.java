@@ -26,21 +26,21 @@ public class InstructorController {
     @Operation(summary = "Get all instructors")
     public ResponseEntity<?>getAllInstructor(@RequestParam Integer page, @RequestParam Integer size){
         List<Instructor> result = instructorService.getAllInstructor(page,size);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Instructor fetched successfully"));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,200,"Instructor fetched successfully"));
     }
 
     @GetMapping("/{instructor-id}")
     @Operation(summary = "Get instructor by ID")
     public ResponseEntity<?> getInstructorById(@PathVariable("instructor-id") Integer instructorId) {
         Instructor result = instructorService.getInstructorById(instructorId);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Instructor retrieved successfully"));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result, 200,"Instructor retrieved successfully"));
     }
 
     @PostMapping()
     @Operation(summary = "Create a new instructor")
     public ResponseEntity<?> createInstructor(@RequestBody InstructorRequest newInstructor){
         Instructor result = instructorService.createInstructor(newInstructor);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Instructor created successfully" ));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,201,"Instructor created successfully" ));
     }
 
     @PutMapping("{instructor-id}")
@@ -51,7 +51,7 @@ public class InstructorController {
             return ResponseEntity.accepted().body(Response.ResponseFail("No instructors found with the given ID"));
         }
         Instructor result = instructorService.updateInstructor(instructorId,updatedInstructor);
-        return ResponseEntity.ok(Response.ResponseSuccess(result,"Instructor updated successfully"));
+        return ResponseEntity.ok(Response.ResponseSuccess(result,200,"Instructor updated successfully"));
 
     }
 
@@ -64,7 +64,7 @@ public class InstructorController {
         }
         Instructor result = instructorService.deleteInstructor(instructorId);
 
-        return ResponseEntity.ok(Response.ResponseSuccess(result,"Instructor deleted successfully"));
+        return ResponseEntity.ok(Response.ResponseSuccess(result,200,"Instructor deleted successfully"));
     }
 
 

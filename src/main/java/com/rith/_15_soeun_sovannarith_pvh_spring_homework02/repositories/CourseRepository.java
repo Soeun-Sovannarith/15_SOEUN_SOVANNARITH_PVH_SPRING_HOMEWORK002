@@ -17,7 +17,7 @@ public interface CourseRepository {
                     one = @One(select = "com.rith._15_soeun_sovannarith_pvh_spring_homework02.repositories.InstructorRepository.getInstructorById"))
 
     })
-    @Select("Select * from courses OFFSET #{offset} LIMIT #{size}")
+    @Select("Select * from courses ORDER BY course_id OFFSET #{offset} LIMIT #{size}")
     List<Courses> getAllCourse(@Param("offset") Integer offset, @Param("size") Integer size);
 
     @ResultMap("courseMapper")

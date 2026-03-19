@@ -22,8 +22,8 @@ public class Response <T> {
     private T payload;
     private Instant timestamp;
 
-    public static <T> Response<T> ResponseSuccess(T payload, String msg) {
-        return new Response<>(true, 200, msg, payload,Instant.now());
+    public static <T> Response<T> ResponseSuccess(T payload, Integer code,String msg) {
+        return new Response<>(true, code, msg, payload,Instant.now());
     }
     public static <T> Response<T> ResponseFail(String msg){
         return new Response<>(false,404,msg,null,Instant.now());

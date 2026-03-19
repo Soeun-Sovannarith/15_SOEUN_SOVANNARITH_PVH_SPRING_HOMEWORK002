@@ -32,14 +32,17 @@ public class StudentController {
     @Operation(summary = "Get all students")
     public ResponseEntity<?> getAllStudent(@RequestParam Integer page, @RequestParam Integer size){
         List<Students> result = studentService.getAllStudent(page,size);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Students retrieved successfully" ));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,200,"Students retrieved successfully" ));
     }
 
     @GetMapping("/{student-id}")
     @Operation(summary = "Get student by ID")
     public ResponseEntity<?> getStudentById(@PathVariable("student-id") Integer studentId){
         Students result = studentService.getStudentById(studentId);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Student retrieved successfully" ));
+        if(result == null){
+            return ResponseEntity.accepted().body(Response.ResponseFail("No student found with the given ID"));
+        }
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,200,"Student retrieved successfully" ));
     }
 
     @PostMapping()
@@ -52,7 +55,7 @@ public class StudentController {
             }
         }
         Students result = studentService.createStudent(newStudent);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result,"Student created successfully" ));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,201,"Student created successfully" ));
     }
 
     @PutMapping("/{student-id}")
@@ -69,7 +72,7 @@ public class StudentController {
             }
         }
         Students result = studentService.updateStudent(studentId, student);
-        return ResponseEntity.ok().body(Response.ResponseSuccess(result, "Student updated successfully"));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(result,200, "Student updated successfully"));
     }
 
     @DeleteMapping("/{student-id}")
@@ -79,6 +82,6 @@ public class StudentController {
         if(existingstudents == null){
             return ResponseEntity.accepted().body(Response.ResponseFail("No students found with the given ID"));
         }
-        return ResponseEntity.ok().body(Response.ResponseSuccess(null, "Student deleted successfully"));
+        return ResponseEntity.ok().body(Response.ResponseSuccess(null, 200, "Student deleted successfully"));
     }
 }
