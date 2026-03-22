@@ -30,7 +30,7 @@ public class StudentController {
 
     @GetMapping()
     @Operation(summary = "Get all students")
-    public ResponseEntity<?> getAllStudent(@RequestParam Integer page, @RequestParam Integer size){
+    public ResponseEntity<?> getAllStudent(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size){
         List<Students> result = studentService.getAllStudent(page,size);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,200,"Students retrieved successfully" ));
     }

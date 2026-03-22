@@ -24,7 +24,7 @@ public class InstructorController {
 
     @GetMapping()
     @Operation(summary = "Get all instructors")
-    public ResponseEntity<?>getAllInstructor(@RequestParam Integer page, @RequestParam Integer size){
+    public ResponseEntity<?>getAllInstructor(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer size){
         List<Instructor> result = instructorService.getAllInstructor(page,size);
         return ResponseEntity.ok().body(Response.ResponseSuccess(result,200,"Instructor fetched successfully"));
     }
